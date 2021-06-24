@@ -1,0 +1,11 @@
+1. Ensure to first get the credentials of your cluster in Azure Cloud Shell
+
+az aks get-credentials --resource-group test-grp --name democluster
+
+2. Get the resource group which holds the nodes of your Azure Kubernetes cluster
+
+az aks show --resource-group test-grp --name democluster --query nodeResourceGroup -o tsv
+
+3. Then create a disk. Ensure to change the resource group details accordingly
+
+az disk create --resource-group MC_test-grp_democluster_northeurope --name clusterdisk --size-gb 20 --query id --output tsv
